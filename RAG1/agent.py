@@ -1,13 +1,14 @@
-import tools as tl
-from prompt import system_agent_prompt
+import RAG1.tools as tl
+from .prompt import system_agent_prompt
 from langchain_google_genai import ChatGoogleGenerativeAI
-from tools import collecting_info
+from .tools import collecting_info
 from langchain.agents import create_agent
 from langchain.messages import HumanMessage
-from objects import Answer
+from .objects import Answer
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-3.5-flash",
+    model="gemini-3.1-flash-lite",
+    # model="gemini-3.5-flash",
     temperature=0
 )
 
@@ -34,4 +35,4 @@ def ask(question) -> dict:
         "context": structured_response.context
     }
 
-print(ask("what is the diets  of penguin"))
+# print(ask("what is the diets  of penguin"))
